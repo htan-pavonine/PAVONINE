@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown to Tết 2025</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #f7c59f, #ff6f61);
+            color: #fff;
+            text-align: center;
+        }
+        .countdown {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px 40px;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        .countdown h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        .countdown p {
+            font-size: 1.5rem;
+        }
+        .time {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="countdown">
+        <h1>Countdown to Tết 2025</h1>
+        <p>Time left until Tết:</p>
+        <p class="time" id="time"></p>
+    </div>
+
+    <script>
+        function updateCountdown() {
+            const tetDate = new Date('2025-01-29T00:00:00'); // Tết Nguyên Đán 2025
+            const now = new Date();
+            const timeDiff = tetDate - now;
+
+            if (timeDiff > 0) {
+                const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+                document.getElementById('time').textContent = `${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds`;
+            } else {
+                document.getElementById('time').textContent = "Happy Tết!";
+            }
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>
